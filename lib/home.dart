@@ -25,7 +25,7 @@ class _HomeState extends State<Home> {
   classifyImage(File image) async {
     var output = await Tflite.runModelOnImage(
         path: image.path,
-        numResults: 3,
+        numResults: 5,
         imageMean: 127.5,
         imageStd: 127.5,
         threshold: 0.3);
@@ -36,8 +36,8 @@ class _HomeState extends State<Home> {
   }
 
   loadModel() async {
-    // return Tflite.loadModel(
-    //     model: 'assets/model_unquant.tflite', labels: 'assets/labels.txt');
+    return Tflite.loadModel(
+        model: 'assets/model.tflite', labels: 'assets/labels.txt');
   }
 
   pickImage() async {
@@ -86,25 +86,25 @@ class _HomeState extends State<Home> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               SizedBox(
-                height: 50,
+                height: 30,
               ),
               Text(
                 'Detect flowers',
                 style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w600,
-                    fontSize: 26),
+                    fontSize: 22),
               ),
               Text(
                 'By CNN with tensorflow',
                 style: TextStyle(
                     color: Colors.white70,
-                    fontSize: 20,
+                    fontSize: 18,
                     fontWeight: FontWeight.w600),
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 10),
               Container(
-                padding: EdgeInsets.all(30),
+                padding: EdgeInsets.all(20),
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(30),
@@ -125,7 +125,7 @@ class _HomeState extends State<Home> {
                                   children: [
                                     Image.asset('assets/flower.png'),
                                     SizedBox(
-                                      height: 30,
+                                      height: 20,
                                     )
                                   ],
                                 ),
@@ -134,25 +134,25 @@ class _HomeState extends State<Home> {
                                 child: Column(
                                   children: <Widget>[
                                     Container(
-                                      height: 300,
+                                      height: 250,
                                       child: ClipRRect(
                                         borderRadius: BorderRadius.circular(10),
                                         child: Image.file(_image),
                                       ),
                                     ),
                                     SizedBox(
-                                      height: 20,
+                                      height: 10,
                                     ),
                                     _output != null
                                         ? Text(
                                             'Prediction is ${_output[0]['label']}',
                                             style: TextStyle(
-                                                color: Colors.white,
+                                                color: Colors.black,
                                                 fontSize: 20),
                                           )
                                         : Container(),
                                     SizedBox(
-                                      height: 30,
+                                      height: 15,
                                     )
                                   ],
                                 ),
