@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jankenpon/home.dart';
+import 'package:imageclassifier/home.dart';
 import 'package:splashscreen/splashscreen.dart';
 
 class MySplashScreen extends StatefulWidget {
